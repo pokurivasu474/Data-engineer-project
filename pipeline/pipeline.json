@@ -27,14 +27,22 @@
 						}
 					},
 					"dataset": {
-						"referenceName": "Json_dynamic",
-						"type": "DatasetReference"
-					}
+						"referenceName": "Json",
+						"type": "DatasetReference",
+						"parameters": {
+							"container": "kidneyfilebronze",
+							"folder": "cdc",
+							"file": "cdc.json"
+						}
+					},
+					"firstRowOnly": false
 				}
 			},
 			{
 				"name": "AzuresqlTolake",
 				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
