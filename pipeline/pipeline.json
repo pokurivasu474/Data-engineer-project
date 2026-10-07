@@ -100,12 +100,15 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Parquet_dynamic",
+						"referenceName": "Parquet",
 						"type": "DatasetReference",
 						"parameters": {
-							"container": "kidneyfilebronze",
-							"folder": "incremental",
-							"file": "Patient.csv"
+							"container": "bronze",
+							"folder": "Users",
+							"file": {
+								"value": "@concat(pipeline().parameters.table,'_',variables('current'))",
+								"type": "Expression"
+							}
 						}
 					}
 				]
