@@ -195,7 +195,7 @@
 										"file": "@concat(pipeline().parameters.table,'_',variables('current'))"
 									}
 								},
-								"enableLogging": true,
+								"enableLogging": false,
 								"storeSettings": {
 									"type": "AzureBlobFSReadSettings",
 									"recursive": true,
@@ -231,7 +231,7 @@
 										{
 											"name": "cdc",
 											"value": {
-												"value": "@activity('max_cdc').output.resultsets[0].rows[0].cdc",
+												"value": "@activity('max_cdc_copy1').output.resultsets[0].rows[0].cdc",
 												"type": "Expression"
 											}
 										}
