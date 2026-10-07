@@ -35,7 +35,7 @@
 							"file": "cdc.json"
 						}
 					},
-					"firstRowOnly": false
+					"firstRowOnly": true
 				}
 			},
 			{
@@ -67,7 +67,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "select*from @{pipeline().parameters.schema}.@{pipeline().parameters.table} where @{pipeline().parameters.cdc_col}>@{activity('Lookup1').output.value[0].cdc}",
+							"value": "SELECT *\nFROM @{pipeline().parameters.schema}.@{pipeline().parameters.table}\nWHERE @{pipeline().parameters.cdc_col} > @{activity('Lookup1').output.firstRow.cdc}",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -149,13 +149,16 @@
 		],
 		"parameters": {
 			"schema": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "dbo"
 			},
 			"cdc_col": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "patient_id"
 			},
 			"table": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "Patient"
 			}
 		},
 		"variables": {
