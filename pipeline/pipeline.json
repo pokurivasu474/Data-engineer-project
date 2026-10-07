@@ -134,6 +134,10 @@
 							"table": {
 								"value": "@pipeline().parameters.cdc_col",
 								"type": "Expression"
+							},
+							"schema": {
+								"value": "@pipeline().parameters.schema",
+								"type": "Expression"
 							}
 						}
 					},
